@@ -6,11 +6,11 @@ ADC_REF_PATH = "/sys/bus/iio/devices/iio:device0/in_voltage2_raw"
 
 PWM_CHIP_BASE = "/sys/class/pwm/pwmchip0/"
 PWM_PERIOD_NS = 1000000  # 1ms (1kHz)
-PWM_DC_NS = 250000  # 25% duty cycle
+PWM_DC_MAX_NS = 750000  # set max allowable duty cycle to 75%
 
 M4_CHANNEL = "pwm0"  # P8_19
 M3_CHANNEL = "pwm1"  # P8_13
-M4_PATH = f"{PWM_CHIP_BASE}{M4_CHANNEL}"
+M4_PATH = f"{PWM_CHIP_BASE}{M4_CHANNEL}" #concatenate strings for full channel path
 M3_PATH = f"{PWM_CHIP_BASE}{M3_CHANNEL}"
 
 M3_DIR_PIN = 75  # P8_14

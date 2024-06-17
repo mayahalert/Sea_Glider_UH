@@ -1,6 +1,6 @@
 # module to control GPIO pins on the BBAI64
 # probably more efficient way to contorl GPIO pins than using the built-in functions this way in the terminal
-
+# ********* need to test before using********
 import subprocess #for interacting with the shell
 
 def out_gpio(chip, pin, value):
