@@ -1,28 +1,38 @@
 from config import *
 from hardware.pwm import PWMController
 import time
+import unittest
 
 # Initialize PWM controller for m4 led on motor cape
 pwm = PWMController(PWM_CHIP_BASE, PWM_PERIOD_NS)
 
-try:
-    # Fade LED up to 100% and down to 0% over 5 seconds
-    fade_time = 5  # total fade time in seconds
-    steps = 100  # number of steps for smooth fade
-    step_time = fade_time / steps  # time per step
+pwm.set_pwm_dc(M3_PATH, 10)
+pwm.set_pwm_dc(M4_PATH, 90)
+time.sleep(1)
+pwm.set_pwm_dc(M3_PATH, 25)
+pwm.set_pwm_dc(M4_PATH, 75)
+time.sleep(1)
+pwm.set_pwm_dc(M3_PATH, 50)
+pwm.set_pwm_dc(M4_PATH, 50)
+time.sleep(1)
+pwm.set_pwm_dc(M3_PATH, 75)
+pwm.set_pwm_dc(M4_PATH, 25)
+time.sleep(1)
+pwm.set_pwm_dc(M3_PATH, 90)
+pwm.set_pwm_dc(M4_PATH, 10)
+time.sleep(1)
+pwm.set_pwm_dc(M3_PATH, 10)
+pwm.set_pwm_dc(M4_PATH, 90)
+time.sleep(1)
+pwm.set_pwm_dc(M3_PATH, 90)
+pwm.set_pwm_dc(M4_PATH, 10)
+time.sleep(1)
+pwm.set_pwm_dc(M3_PATH, 10)
+pwm.set_pwm_dc(M4_PATH, 90)
+time.sleep(1)
+pwm.set_pwm_dc(M3_PATH, 90)
+pwm.set_pwm_dc(M4_PATH, 10)
+time.sleep(1)
+pwm.set_pwm_dc(M3_PATH, 0)
+pwm.set_pwm_dc(M4_PATH, 0)
 
-    # Fade up
-    for i in range(steps + 1):
-        duty_cycle = int(PWM_PERIOD_NS * (i / steps))
-        pwm.set_pwm_dc(M4_PATH, duty_cycle)
-        time.sleep(step_time)
-
-    # Fade down
-    for i in range(steps, -1, -1):
-        duty_cycle = int(PWM_PERIOD_NS * (i / steps))
-        pwm.set_pwm_dc(M4_PATH, duty_cycle)
-        time.sleep(step_time)
-
-except KeyboardInterrupt:
-    # Turn off LED and exit on Ctrl+C
-    pwm.set_pwm_dc(0)

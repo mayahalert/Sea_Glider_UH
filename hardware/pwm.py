@@ -6,8 +6,8 @@ class PWMController:
     def __init__(self, pwm_chip_base, period_ns):
         self.pwm_chip_base = pwm_chip_base
         self.period_ns = period_ns
-        self.path_b = f"{pwm_chip_base}{"pwm1"}"
-        self.path_a = f"{pwm_chip_base}{"pwm0"}"
+        self.path_b = f"{pwm_chip_base}pwm1"
+        self.path_a = f"{pwm_chip_base}pwm0"
         
         # Set the period for both channels
         # both channels on same pwm driver must have the same period since they use same clock signal
