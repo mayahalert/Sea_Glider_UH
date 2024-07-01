@@ -36,3 +36,31 @@
         &P8_26_pruout_pin   /* M4.HIGH */
         &P8_14_pruout_pin   /* M3.HIGH */
 };
+
+can also try:
+
+bone_motor_gpio: &main_gpio0 {
+    pinctrl-names = "default";
+    pinctrl-0 = <
+        &P8_26_pruout_pin
+        &P8_14_pruout_pin
+    >;
+    status = "okay";
+};
+
+or:
+
+bone_motor_gpio: &ocp {
+    pinctrl-names = "default";
+    pinctrl-0 = <
+        &P8_26_pruout_pin
+        &P8_14_pruout_pin
+    >;    
+}
+
+or:
+
+&ocp {
+    P8_26_pinmux { pinctrl-0 = <&P8_26_pruout_pin>; };
+    P8_14_pinmux { pinctrl-0 = <&P8_14_pruout_pin>; };
+};
