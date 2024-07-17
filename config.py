@@ -1,9 +1,9 @@
 #configure macros for peripherals and pins
 
 #analog sensor paths
-ROLL_POT_PATH = "/sys/bus/iio/devices/iio:device0/in_voltage0_raw"
-PITCH_POT_PATH = "/sys/bus/iio/devices/iio:device0/in_voltage1_raw"
-ADC_REF_PATH = "/sys/bus/iio/devices/iio:device0/in_voltage2_raw"
+ROLL_POT_PATH = "/sys/bus/iio/devices/iio:device0/in_voltage0_raw" # P9_39
+PITCH_POT_PATH = "/sys/bus/iio/devices/iio:device0/in_voltage1_raw" # P9_40
+ADC_REF_PATH = "/sys/bus/iio/devices/iio:device0/in_voltage2_raw" # P9_37
 
 #SOC Temperature paths
 CPU_TEMP_PATH = "/sys/devices/virtual/thermal/thermal_zone0/temp"
@@ -30,4 +30,4 @@ ROLL_POT_MAX = 2000
 ROLL_POT_MIN = 100
 
 PITCH_POT_MAX = 2000
-PITCH_POT_MIN = 100
+PITCH_POT_MIN = 300
